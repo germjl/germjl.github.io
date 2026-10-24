@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuestra boda | Invitación</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap');
+
+:root {
+  --verde: #455c4b;
+  --dorado: #b69a62;
+  --crema: #faf7f0;
+  --texto: #45483f;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--crema);
+  color: var(--texto);
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+}
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.portada {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 35px 20px;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(29, 46, 35, .50), rgba(29, 46, 35, .64)),
+    url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=85')
+    center/cover no-repeat;
+  color: white;
+}
+
+.marco {
+  width: min(100%, 680px);
+  padding: 55px 25px;
+  border: 1px solid rgba(226, 206, 159, .9);
+  outline: 1px solid rgba(226, 206, 159, .5);
+  outline-offset: 8px;
+  animation: aparecer 1.5s ease both;
+}
+
+.etiqueta {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.nombres {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(48px, 10vw, 85px);
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.ampersand {
+  color: #e2cc9f;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 35px;
+  margin: 5px 0;
+}
+
+.frase {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 21px;
+  line-height: 1.6;
+  margin: 25px auto;
+  max-width: 390px;
+}
+
+.fecha-portada {
+  font-size: 12px;
+  letter-spacing: 3px;
+  margin: 28px 0;
+}
+
+.boton {
+  display: inline-block;
+  border: 1px solid var(--dorado);
+  color: white;
+  text-decoration: none;
+  padding: 15px 27px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: .3s;
+  cursor: pointer;
+  background: transparent;
+}
+
+.boton:hover {
+  background: var(--dorado);
+  color: white;
+}
+
+.seccion {
+  padding: 85px 22px;
+}
+
+.seccion:nth-child(even) {
+  background: #f1ede3;
+}
+
+.subtitulo {
+  color: var(--dorado);
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(35px, 7vw, 48px);
+  font-weight: 500;
+  margin-bottom: 25px;
+}
+
+.descripcion {
+  max-width: 550px;
+  margin: 0 auto;
+  font-size: 13px;
+  line-height: 2;
+  color: #77786e;
+}
+
+.corazon {
+  font-size: 24px;
+  color: var(--dorado);
+  margin: 25px 0;
+}
+
+.contador {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 35px;
+}
+
+.unidad {
+  min-width: 85px;
+  padding: 20px 12px;
+  border: 1px solid #ded5c2;
+}
+
+.numero {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 38px;
+  color: var(--verde);
+}
+
+.unidad span {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 5px;
+}
+
+.detalles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 800px;
+  margin: 40px auto 0;
+}
+
+.detalle {
+  padding: 35px 20px;
+  background: #fffdf8;
+  border: 1px solid #e6dfd1;
+}
+
+.icono {
+  font-size: 28px;
+  margin-bottom: 18px;
+}
+
+.detalle h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 27px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.detalle p {
+  font-size: 12px;
+  line-height: 2;
+  color: #77786e;
+}
+
+.detalle .boton {
+  color: var(--verde);
+  margin-top: 22px;
+  padding: 12px 15px;
+  font-size: 9px;
+}
+
+.itinerario {
+  max-width: 450px;
+  margin: 35px auto 0;
+  text-align: left;
+}
+
+.evento {
+  border-left: 1px solid var(--dorado);
+  padding: 0 0 30px 25px;
+  position: relative;
+}
+
+.evento::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  background: var(--dorado);
+  border-radius: 50%;
+  position: absolute;
+  left: -5px;
+  top: 5px;
+}
+
+.evento h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.evento p {
+  font-size: 12px;
+  color: #77786e;
+  margin-top: 7px;
+  line-height: 1.8;
+}
+
+.codigo-vestimenta {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 25px;
+  color: var(--verde);
+  margin-top: 25px;
+}
+
+.confirmacion {
+  background: var(--verde);
+  color: #77786e;
+}
+
+.confirmacion .subtitulo {
+  color: #77786e;
+}
+
+.confirmacion .descripcion {
+  color: #77786e;
+}
+
+.confirmacion .boton {
+  margin-top: 30px;
+  border-color: #e2cc9f;
+}
+
+footer {
+  padding: 35px 20px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  color: var(--verde);
+  line-height: 1.6;
+}
+
+footer small {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+  margin-top: 15px;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 550px) {
+  .marco {
+    padding: 40px 15px;
+  }
+
+  .etiqueta {
+    letter-spacing: 3px;
+    font-size: 9px;
+  }
+
+  .seccion {
+    padding: 65px 18px;
+  }
+
+  .detalles {
+    grid-template-columns: 1fr;
+  }
+
+  .unidad {
+    min-width: 65px;
+    padding: 15px 8px;
+  }
+
+  .numero {
+    font-size: 30px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PORTADA -->
+<header class="portada">
+  <div class="marco">
+    <p class="etiqueta">Con la bendición de nuestras familias</p>
+
+    <h1 class="nombres">
+      Roslyn Dallana Guerrero 
+      <div class="ampersand">&</div>
+      Jose luis Geronimo
+    </h1>
+
+    <p class="frase">
+      Hay historias que comienzan con una mirada
+      y amores que duran toda la vida.
+      Nos encantaría compartir contigo el comienzo
+      de nuestra historia para siempre.
+    </p>
+
+    <div class="fecha-portada">
+      11 · NOVIEMBRE · 2026
+    </div>
+
+    <a href="#invitacion" class="boton">
+      Descubre nuestra invitación
+    </a>
+  </div>
+</header>
+
+<!-- MENSAJE -->
+<section class="seccion" id="invitacion">
+  <p class="subtitulo">Un día para recordar</p>
+  <h2>¡Nos casamos!</h2>
+
+  <p class="descripcion">
+    Con mucha alegría queremos invitarte a celebrar
+    el amor que nos une y el inicio de una nueva etapa.
+    Tu presencia hará que este día sea todavía más especial.
+  </p>
+
+  <div class="corazon">♡</div>
+
+  <p class="subtitulo">Falta muy poco para nuestro gran día</p>
+
+  <div class="contador">
+    <div class="unidad">
+      <div class="numero" id="dias">00</div>
+      <span>Días</span>
+    </div>
+
+    <div class="unidad">
+      <div class="numero" id="horas">00</div>
+      <span>Horas</span>
+    </div>
+
+    <div class="unidad">
+      <div class="numero" id="minutos">00</div>
+      <span>Minutos</span>
+    </div>
+
+    <div class="unidad">
+      <div class="numero" id="segundos">00</div>
+      <span>Segundos</span>
+    </div>
+  </div>
+</section>
+
+<!-- CEREMONIA Y RECEPCIÓN -->
+<section class="seccion">
+  <p class="subtitulo">Acompáñanos</p>
+  <h2>Detalles del evento</h2>
+
+  <div class="detalles">
+    <article class="detalle">
+      <div class="icono">♧</div>
+      <h3>La ceremonia</h3>
+
+      <p>
+        Miercoles, 11 de noviembre de 2026<br>
+        4:00 p. m.<br>
+        Templo de San Diego de Alcalá<br>
+        Guanajuato,Gto 
+      </p>
+
+      <a
+        class="boton"
+        href="https://maps.app.goo.gl/P3zKV8mRXmKPbfE77"
+        target="_blank"
+        rel="noopener noreferrer">
+        Ver ubicación
+      </a>
+    </article>
+
+    <article class="detalle">
+      <div class="icono">♡</div>
+      <h3>La recepción</h3>
+
+      <p>
+        Fecha por confirmar.... 2026<br>
+        6:00 p. m.<br>
+        Terraza del Sol Eventos<br>
+        Morelia, Mich.
+      </p>
+
+      <a
+        class="boton"
+        href="https://maps.app.goo.gl/yDeBUcMSaE2fUPDG8"
+        target="_blank"
+        rel="noopener noreferrer">
+        Ver ubicación
+      </a>
+    </article>
+  </div>
+</section>
+
+<!-- ITINERARIO -->
+<section class="seccion">
+  <p class="subtitulo">Celebremos juntos</p>
+  <h2>Programa del día</h2>
+
+  <div class="itinerario">
+    <div class="evento">
+      <h3>4:00 p. m. — Ceremonia</h3>
+      <p>El momento en que uniremos nuestras vidas.</p>
+    </div>
+
+    <div class="evento">
+      <h3>6:00 p. m. — Recepción y dia de la celebracion</h3>
+      <p>Un brindis por el amor y los nuevos comienzos.</p>
+    </div>
+
+    <div class="evento">
+      <h3>7:00 p. m. — Cena</h3>
+      <p>Una deliciosa cena para compartir.</p>
+    </div>
+
+    <div class="evento">
+      <h3>8:00 p. m. — ¡A bailar!</h3>
+      <p>Que la música y la alegría nos acompañen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VESTIMENTA -->
+<section class="seccion">
+  <p class="subtitulo">Una ocasión especial</p>
+  <h2>Código de vestimenta</h2>
+
+  <div class="corazon">✧</div>
+
+  <p class="descripcion">
+    Nos encantará verte celebrar con nosotros
+    en tu mejor atuendo.
+  </p>
+
+  <p class="codigo-vestimenta">
+    Formal · Elegante
+  </p>
+
+  <p class="descripcion" style="margin-top: 12px;">
+    Sugerencia: reservar el color blanco para la novia.
+  </p>
+</section>
+
+<!-- CONFIRMACIÓN -->
+<section class="seccion confirmacion">
+  <p class="subtitulo">Tu presencia es nuestro mejor regalo</p>
+  <h2>¿Nos acompañas?</h2>
+
+  <p class="descripcion">
+    Ayúdanos a preparar este día tan especial
+    confirmando tu asistencia por WhatsApp.
+  </p>
+
+  <a
+    class="boton"
+    href="https://wa.me/524521208848?text=Hola%2C%20Roslyn%20y%20Jose%20Luis.%20Con%20mucha%20alegr%C3%ADa%20confirmo%20mi%20asistencia%20a%20su%20boda%20el%2011%20de%20noviembre%20de%202026.%20%F0%9F%92%9A"
+    target="_blank"
+    rel="noopener noreferrer">
+    Confirmar asistencia ♡
+  </a>
+</section>
+
+<!-- DESPEDIDA -->
+<footer>
+  <p>Roslyn & Jose Luis </p>
+  <p>El comienzo de nuestro para siempre.</p>
+  <small>11 · 11 · 2026</small>
+</footer>
+
+<script>
+// Fecha y hora de la boda.
+// Formato: año, mes (0 = enero), día, hora, minuto.
+const fechaBoda = new Date(2026, 11, 11, 16, 0, 0).getTime();
+
+function actualizarContador() {
+  const diferencia = fechaBoda - Date.now();
+
+  if (diferencia <= 0) {
+    document.getElementById("dias").textContent = "00";
+    document.getElementById("horas").textContent = "00";
+    document.getElementById("minutos").textContent = "00";
+    document.getElementById("segundos").textContent = "00";
+    return;
+  }
+
+  const dias = Math.floor(diferencia / 86400000);
+  const horas = Math.floor((diferencia % 86400000) / 3600000);
+  const minutos = Math.floor((diferencia % 3600000) / 60000);
+  const segundos = Math.floor((diferencia % 60000) / 1000);
+
+  document.getElementById("dias").textContent = dias;
+  document.getElementById("horas").textContent = String(horas).padStart(2, "0");
+  document.getElementById("minutos").textContent = String(minutos).padStart(2, "0");
+  document.getElementById("segundos").textContent = String(segundos).padStart(2, "0");
+}
+
+actualizarContador();
+setInterval(actualizarContador, 1000);
+</script>
+
+
+<!-- MÚSICA DE LA BODA: ENJAMBRE -->
+<style>
+  .boton-musica {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 9999;
+    background: #455c4b;
+    color: white;
+    border: 1px solid #b69a62;
+    border-radius: 30px;
+    padding: 13px 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .2);
+  }
+
+  .boton-musica:hover {
+    background: #b69a62;
+  }
+
+  /* Reproductor invisible */
+  #reproductorMusica {
+    position: fixed;
+    width: 1px;
+    height: 1px;
+    opacity: 0.01;
+    left: 0;
+    bottom: 0;
+    pointer-events: none;
+  }
+</style>
+
+
+<!-- Música de la invitación -->
+<style>
+  #botonMusica {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    padding: 13px 20px;
+    border: 1px solid #c5a66a;
+    border-radius: 30px;
+    background: #455c4b;
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px #0003;
+  }
+
+  #botonMusica:hover {
+    background: #607963;
+  }
+</style>
+
+<audio id="musicaBoda" loop preload="auto">
+  <source src="ciencia-de-la-lluvia.mp3" type="audio/mpeg">
+  Tu navegador no puede reproducir este audio.
+</audio>
+
+<button id="botonMusica" type="button">
+  ♫ Reproducir nuestra canción
+</button>
+
+<script>
+  const musica = document.getElementById("musicaBoda");
+  const boton = document.getElementById("botonMusica");
+
+  boton.addEventListener("click", async () => {
+    if (musica.paused) {
+      try {
+        await musica.play();
+        boton.textContent = "Ⅱ Pausar nuestra canción";
+      } catch (error) {
+        alert("No se pudo reproducir la canción. Verifica el archivo MP3.");
+      }
+    } else {
+      musica.pause();
+      boton.textContent = "♫ Reproducir nuestra canción";
+    }
+  });
+
+  musica.addEventListener("ended", () => {
+    boton.textContent = "♫ Reproducir nuestra canción";
+  });
+</script>
+<!-- Fin de la música -->
+
+
+</body>
+</html>
